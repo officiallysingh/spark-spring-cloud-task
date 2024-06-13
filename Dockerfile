@@ -16,7 +16,6 @@
 #
 # Use an existing image as the base image
 ARG java_image_tag=17-jre
-
 FROM eclipse-temurin:${java_image_tag}
 
 ARG spark_uid=185
@@ -75,9 +74,9 @@ RUN set -ex; \
 
 ENV SPARK_HOME /opt/spark
 
-WORKDIR /opt/spark/work-dir
+ADD target/spark-spring-cloud-task-*.jar $SPARK_JOB_APPS_DIR/spark-spring-cloud-task.jar
 
-COPY target/spark-spring-cloud-task-*.jar $SPARK_JOB_APPS_DIR/spark-spring-cloud-task.jar
+WORKDIR /opt/spark/work-dir
 
 RUN chmod g+w /opt/spark/work-dir
 RUN chmod a+x /opt/decom.sh

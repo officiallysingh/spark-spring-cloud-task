@@ -1,4 +1,4 @@
-package com.telos.sparkspringcloudtask;
+package com.ksoot.spark;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;

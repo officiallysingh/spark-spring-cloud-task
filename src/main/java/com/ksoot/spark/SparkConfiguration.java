@@ -1,4 +1,4 @@
-package com.telos.sparkspringcloudtask;
+package com.ksoot.spark;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.spark.sql.SparkSession;

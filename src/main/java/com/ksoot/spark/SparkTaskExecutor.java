@@ -1,4 +1,4 @@
-package com.telos.sparkspringcloudtask;
+package com.ksoot.spark;
 
 import static org.apache.spark.sql.functions.*;
 

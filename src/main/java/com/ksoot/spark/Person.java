@@ -1,4 +1,4 @@
-package com.telos.sparkspringcloudtask;
+package com.ksoot.spark;
 
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
