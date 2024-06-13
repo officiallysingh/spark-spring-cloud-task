@@ -9,12 +9,13 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration;
 import org.springframework.cloud.task.configuration.EnableTask;
 import org.springframework.context.annotation.Bean;
 
 @Slf4j
 @EnableTask
-@SpringBootApplication
+@SpringBootApplication(exclude = {GsonAutoConfiguration.class})
 public class SparkSpringCloudTask {
 
   public static void main(String[] args) {
