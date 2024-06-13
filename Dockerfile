@@ -21,6 +21,8 @@ FROM eclipse-temurin:${java_image_tag}
 
 ARG spark_uid=185
 
+ENV SPARK_JOB_APPS_DIR /opt/spark/job-apps
+
 RUN groupadd --system --gid=${spark_uid} spark && \
     useradd --system --uid=${spark_uid} --gid=spark spark
 
@@ -30,7 +32,7 @@ RUN set -ex; \
     mkdir -p /opt/spark; \
     mkdir /opt/spark/python; \
     mkdir -p /opt/spark/examples; \
-    mkdir -p /opt/spark/job-apps; \
+    mkdir -p "$SPARK_JOB_APPS_DIR"; \
     mkdir -p /opt/spark/work-dir; \
     chmod g+w /opt/spark/work-dir; \
     touch /opt/spark/RELEASE; \
@@ -75,12 +77,7 @@ ENV SPARK_HOME /opt/spark
 
 WORKDIR /opt/spark/work-dir
 
-#COPY target/spark-spring-cloud-task-*.jar /opt/spark/work-dir
-#RUN mv /opt/spark/work-dir/spark-spring-cloud-task-*.jar /opt/spark/work-dir/spark-spring-cloud-task.jar
-#COPY target/spark-spring-cloud-task-0.0.1-SNAPSHOT.jar /opt/spark/work-dir
-#COPY target/spark-spring-cloud-task-0.0.1-SNAPSHOT.jar spark-spring-cloud-task-0.0.1-SNAPSHOT.jar
-#COPY target/spark-spring-cloud-task-0.0.1-SNAPSHOT.jar $SPARK_HOME/examples/jars
-COPY target/spark-spring-cloud-task-0.0.1-SNAPSHOT.jar $SPARK_HOME/job-apps
+COPY target/spark-spring-cloud-task-*.jar $SPARK_JOB_APPS_DIR/spark-spring-cloud-task.jar
 
 RUN chmod g+w /opt/spark/work-dir
 RUN chmod a+x /opt/decom.sh
