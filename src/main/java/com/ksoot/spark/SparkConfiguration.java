@@ -16,7 +16,8 @@ class SparkConfiguration {
   SparkSession sparkSession() {
     return SparkSession.builder()
         .appName("spark-spring-cloud-task")
-        .master("k8s://https://127.0.0.1:58410")
+//        .master("k8s://https://127.0.0.1:49449")
+        .master("k8s://https://kubernetes.default.svc")
 //            .master("local[*]")
         //                .config("spark.kubernetes.driverEnv.SPARK_MASTER_URL",
         // "spark://telos-spark-master-0.telos-spark-headless.default.svc.cluster.local:7077")
